@@ -43,8 +43,10 @@ app.post("/webhook", async (req, res) => {
         })
       });
 
-      const difyData = await difyRes.json();
-      const reply = difyData.answer || "No response.";
+const reply =
+  difyData.answer ||
+  difyData.data?.outputs?.text ||
+  "BAPTISTRY is thinking... please try again.";
 
       await fetch(`https://graph.facebook.com/v18.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`, {
         method: "POST",
