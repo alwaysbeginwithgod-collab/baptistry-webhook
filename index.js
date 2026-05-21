@@ -36,11 +36,12 @@ app.post("/webhook", async (req, res) => {
           "Authorization": `Bearer ${DIFY_API_KEY}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          inputs: {},
-          query: userMessage,
-          user: sender
-        })
+       body: JSON.stringify({
+        inputs: {},
+        query: userMessage,
+        user: sender,
+        response_mode: "blocking"
+      })
       });
 
 const reply =
