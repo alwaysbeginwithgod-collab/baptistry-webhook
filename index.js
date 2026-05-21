@@ -37,13 +37,17 @@ app.post("/webhook", async (req, res) => {
           "Content-Type": "application/json"
         },
        body: JSON.stringify({
-        inputs: {},
-        query: userMessage,
-        user: sender,
-        response_mode: "blocking"
-      })
+         inputs: {
+           query: userMessage
+         },
+         query: userMessage,
+         user: sender,
+         response_mode: "blocking"
+       })
       });
 
+const difyData = await difyRes.json();
+      
 const reply =
   difyData.answer ||
   difyData.data?.outputs?.text ||
