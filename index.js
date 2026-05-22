@@ -45,11 +45,13 @@ app.post("/webhook", async (req, res) => {
         body: JSON.stringify({
           inputs: {
             input: userMessage   // ✅ THIS IS THE CRITICAL FIX
-          },
-          query: userMessage,
-          user: sender,
-          response_mode: "blocking"
-        })
+          
+         },
+            query: userMessage,
+            user: sender,
+            response_mode: "blocking",
+            conversation_id: ""
+      })
       });
 
       const difyData = await difyRes.json();
