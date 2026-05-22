@@ -63,6 +63,7 @@ app.post("/webhook", async (req, res) => {
       const reply =
         difyData.answer ||
         difyData.data?.outputs?.text ||
+        difyData.data?.outputs?.result ||   // ✅ THIS IS THE KEY FIX
         difyData.data?.outputs ||
         difyData.data?.text ||
         (Array.isArray(difyData.data) ? difyData.data[0]?.text : null) ||
